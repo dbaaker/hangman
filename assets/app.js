@@ -16,9 +16,10 @@ let answer = '';
 let maxWrong = 6;
 let mistakes = 0;
 let guessed = [];
+let wordStatus = null;
 
 function randomWord() {
-    answers = streamingServices[Math.floor(Math.random() * streamingServices.length)]
+    answer = streamingServices[Math.floor(Math.random() * streamingServices.length)]
 }
 
 function generateButtons() {
@@ -37,6 +38,16 @@ function generateButtons() {
 }
 
 
+function guessedWord() {
+    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : ' _ ')).join('')
+
+    document.getElementById('wordSpotlight').innerHTML = wordStatus;
+}
+
+document.getElementById('maxWrong').innerHTML = maxWrong
+
+
 
 randomWord();
-generateButtons()
+generateButtons();
+guessedWord();
