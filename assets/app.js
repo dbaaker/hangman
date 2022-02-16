@@ -27,7 +27,7 @@ function generateButtons() {
         `
         <button
         class="btn btn-lg btn-primary m-2"
-        id='` + letter + `
+        id='` + letter + `'
         onClick="handleGuess('` + letter + `')"
         >
         ` + letter + `
@@ -37,6 +37,14 @@ function generateButtons() {
         document.getElementById('keyboard').innerHTML = buttonsHtml;
 }
 
+function handleGuess(chosenLetter) {
+    guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
+    document.getElementById('chosenLetter').setAttribute('disabled', true);
+    
+    if (answer.indexOf(chosenLetter) >= 0) {
+        guessedWord();
+    }
+}
 
 function guessedWord() {
     wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : ' _ ')).join('')
@@ -51,3 +59,4 @@ document.getElementById('maxWrong').innerHTML = maxWrong
 randomWord();
 generateButtons();
 guessedWord();
+// handleGuess()
