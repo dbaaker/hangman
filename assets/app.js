@@ -1,4 +1,4 @@
-let itemsToGuess = 
+let streamingServices = 
 [
     'netflix',
     'hulu',
@@ -12,27 +12,14 @@ let itemsToGuess =
     'allblk tv'
 ]
 
-let startGame = false;
-let timer = 60000;
+let answer = '';
+let maxWrong = 6;
+let mistakes = 0;
+let guessed = [];
 
+function randomWord() {
+    answers = streamingServices[Math.floor(Math.random() * streamingServices.length)]
+    console.log(answers)
+}
 
- 
-itemsToGuess.forEach(el => {
-    console.log(el[2])
-})
-
-
-// begin game - click any button to start
-
-
-// document.addEventListener('keyup', function(el) {
-
-// });
-
-// timer starts
-// append guess
-
-
-
-
-// itemsToGuess.forEach( el => Math.floor(Math.random(el), console.log(el)));
+randomWord();
