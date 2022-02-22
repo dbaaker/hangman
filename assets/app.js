@@ -39,7 +39,7 @@ function generateButtons() {
 
 function handleGuess(chosenLetter) {
     guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-    document.getElementById('chosenLetter').setAttribute('disabled', true);
+    document.getElementById(chosenLetter).setAttribute('disabled', true);
     
     if (answer.indexOf(chosenLetter) >= 0) {
         guessedWord();
@@ -59,4 +59,3 @@ document.getElementById('maxWrong').innerHTML = maxWrong
 randomWord();
 generateButtons();
 guessedWord();
-// handleGuess()
