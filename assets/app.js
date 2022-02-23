@@ -45,16 +45,39 @@ function handleGuess(chosenLetter) {
     
     if (answer.indexOf(chosenLetter) >= 0) {
         guessedWord();
+        checkIfGameWon();
+    } else if ( answer.indexOf(chosenLetter) === -1) {
+        mistakes++;
+        updateMistakes();
+        checkIfGameLost();
+    };
+};
+
+
+function checkIfGameWon() {
+    if (wordStatus === answer) {
+        document.getElementById('keyboard').innerHTML = 'You Won!';
     }
 }
 
-function guessedWord() {
-    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : ' _ ')).join('')
+function checkIfGameLost() {
+    if (mistakes === maxWrong) {
+        document.getElementById('keyboard').innerHTML = 'You lost!';
+    }
+}
 
+
+function guessedWord() {
+    wordStatus = answer.split('').map(letter => (guessed.indexOf(letter) >= 0 ? letter : ' _ ')).join('');
+    
     document.getElementById('wordSpotlight').innerHTML = wordStatus;
 }
 
-document.getElementById('maxWrong').innerHTML = maxWrong
+function updateMistakes() {
+    document.getElementById('mistakes').innerHTML = mistakes;
+}
+
+document.getElementById('maxWrong').innerHTML = maxWrong;
 
 
 
